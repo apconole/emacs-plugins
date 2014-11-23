@@ -1,0 +1,9 @@
+* Introduction
+
+Just a storage of the github locations of my emacs repositories.
+
+To copy it yourself, simply:
+
+|git clone --recursive https://github.com/orgcandman/emacs-plugins.git
+
+-Aaron
