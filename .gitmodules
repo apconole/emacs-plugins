@@ -1,0 +1,153 @@
+[submodule "doxymacs"]
+	path = doxymacs
+	url = https://github.com/emacsattic/doxymacs
+[submodule "emacs-python-environment"]
+	path = emacs-python-environment
+	url = http://github.com/tkf/emacs-python-environment.git
+[submodule "smartparens"]
+	path = smartparens
+	url = https://github.com/Fuco1/smartparens
+[submodule "iedit"]
+	path = iedit
+	url = https://github.com/victorhge/iedit
+[submodule "emacs-jabber"]
+	path = emacs-jabber
+	url = https://github.com/legoscia/emacs-jabber
+[submodule "projectile"]
+	path = projectile
+	url = https://github.com/bbatsov/projectile.git
+[submodule "dash.el"]
+	path = dash.el
+	url = https://github.com/magnars/dash.el
+[submodule "epl"]
+	path = epl
+	url = https://github.com/cask/epl.git
+[submodule "emacs-deferred"]
+	path = emacs-deferred
+	url = http://github.com/kiwanami/emacs-deferred
+[submodule "solarized-emacs"]
+	path = solarized-emacs
+	url = http://github.com/bbatsov/solarized-emacs
+[submodule "js2-mode"]
+	path = js2-mode
+	url = http://github.com/mooz/js2-mode
+[submodule "elpy"]
+	path = elpy
+	url = http://github.com/jorgenschaefer/elpy.git
+[submodule "org-redmine"]
+	path = org-redmine
+	url = https://github.com/gongo/org-redmine.git
+[submodule "jenkins-watch"]
+	path = jenkins-watch
+	url = https://github.com/ataylor284/jenkins-watch.git
+[submodule "irony-mode"]
+	path = irony-mode
+	url = https://github.com/Sarcasm/irony-mode.git
+[submodule "impatient-mode"]
+	path = impatient-mode
+	url = http://github.com/skeeto/impatient-mode.git
+[submodule "Butler"]
+	path = Butler
+	url = https://github.com/AshtonKem/Butler.git
+[submodule "jshint-mode"]
+	path = jshint-mode
+	url = http://github.com/daleharvey/jshint-mode.git
+[submodule "flycheck"]
+	path = flycheck
+	url = https://github.com/flycheck/flycheck
+[submodule "popup-el"]
+	path = popup-el
+	url = https://github.com/auto-complete/popup-el.git
+[submodule "gnuplot-mode"]
+	path = gnuplot-mode
+	url = https://github.com/bruceravel/gnuplot-mode
+[submodule "magit"]
+	path = magit
+	url = https://github.com/magit/magit.git
+[submodule "flymake-easy"]
+	path = flymake-easy
+	url = https://github.com/purcell/flymake-easy.git
+[submodule "emacs-flymake"]
+	path = emacs-flymake
+	url = https://github.com/illusori/emacs-flymake
+[submodule "emacs-jedi"]
+	path = emacs-jedi
+	url = http://github.com/tkf/emacs-jedi.git
+[submodule "helm"]
+	path = helm
+	url = https://github.com/emacs-helm/helm.git
+[submodule "multiple-cursors.el"]
+	path = multiple-cursors.el
+	url = https://github.com/magnars/multiple-cursors.el
+[submodule "yasnippet"]
+	path = yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
+[submodule "yasnippet-snippets"]
+	path = yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "yasmate"]
+	path = yasmate
+	url = https://github.com/capitaomorte/yasmate.git
+[submodule "html.tmbundle"]
+	path = html.tmbundle
+	url = https://github.com/textmate/html.tmbundle.git
+[submodule "objective-c.tmbundle"]
+	path = objective-c.tmbundle
+	url = https://github.com/textmate/objective-c.tmbundle.git
+[submodule "ruby-on-rails-tmbundle"]
+	path = ruby-on-rails-tmbundle
+	url = https://github.com/textmate/ruby-on-rails-tmbundle.git
+[submodule "ruby.tmbundle"]
+	path = ruby.tmbundle
+	url = https://github.com/textmate/ruby.tmbundle.git
+[submodule "pyvenv"]
+	path = pyvenv
+	url = http://github.com/jorgenschaefer/pyvenv.git
+[submodule "emacs-web-server"]
+	path = emacs-web-server
+	url = http://github.com/skeeto/emacs-web-server.git
+[submodule "global"]
+	path = global
+	url = https://github.com/mgalgs/global
+[submodule "git-modes"]
+	path = git-modes
+	url = https://github.com/magit/git-modes.git
+[submodule "s.el"]
+	path = s.el
+	url = https://github.com/magnars/s.el
+[submodule "pylookup"]
+	path = pylookup
+	url = http://github.com/tsgates/pylookup
+[submodule "emacs-epc"]
+	path = emacs-epc
+	url = http://github.com/kiwanami/emacs-epc.git
+[submodule "emacs-flymake-cursor"]
+	path = emacs-flymake-cursor
+	url = https://github.com/ic3guy/emacs-flymake-cursor.git
+[submodule "ac-irony"]
+	path = ac-irony
+	url = https://github.com/Sarcasm/ac-irony.git
+[submodule "pkg-info.el"]
+	path = pkg-info.el
+	url = https://github.com/lunaryorn/pkg-info.el.git
+[submodule "auto-complete-clang"]
+	path = auto-complete-clang
+	url = https://github.com/w-vi/auto-complete-clang
+[submodule "emacs-ctable"]
+	path = emacs-ctable
+	url = http://github.com/kiwanami/emacs-ctable
+[submodule "wanderlust"]
+	path = wanderlust
+	url = https://github.com/wanderlust/wanderlust
+[submodule "auto-complete"]
+	path = auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "flymake-cppcheck"]
+	path = flymake-cppcheck
+	url = https://github.com/senda-akiha/flymake-cppcheck.git
+[submodule "web-mode"]
+	path = web-mode
+	url = http://github.com/fxbois/web-mode.git
+[submodule "bashbot"]
+	path = bashbot
+	url = git@github.com:orgcandman/bashbot.git
