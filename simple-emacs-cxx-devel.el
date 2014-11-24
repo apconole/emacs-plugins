@@ -61,6 +61,8 @@
 (defun simple-emacs-c-mode-hook ()
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'arglist-intro '+)
+
+  (message "Fucked")
   
   (setq c++-tab-always-indent t) ;; pressing the 'tab' key always indents
   (setq c-basic-offset 4) ;; 4 space
@@ -74,6 +76,7 @@
   (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
   (flymake-mode 1)
+
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
 
   (define-key c-mode-base-map (kbd "M-.") 'gtags-find-tag)
@@ -83,5 +86,6 @@
   (add-hook 'after-save-hook #'global-run-tags-automatic))
 
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
+(add-hook 'c-mode-common-hook 'flymake-cppcheck-load)
 
 (provide 'simple-emacs-cxx-devel)

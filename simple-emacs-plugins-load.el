@@ -83,6 +83,10 @@ current directory."
   '(progn (info-initialize)
           (add-to-list 'Info-directory-list (concat simple-emacs-plugins-dir "/magit"))))
 
+(require 'flymake)
+
+(eval-after-load 'flymake '(require 'flymake-cursor))
+
 (require 'simple-emacs-devel)
 (require 'simple-emacs-cxx-devel)
 (require 'simple-emacs-python-devel)
