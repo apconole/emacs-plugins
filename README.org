@@ -14,6 +14,12 @@ to others, and so that the integration or extension can truly be custom. As
 such, I'm probably going to forget things, but the following lists all of the
 known dependencies.
 
+Post clone, you should probably run something like the following:
+
+=find . -type f -name \*.el -exec emacs --batch --eval '(byte-compile-file "{}")' \;=
+
+This should make your load time reasonable.
+
 ** Basic development
 
 - Git 1.7.0+ (used for magit, and you probably already have this... just for posterity)
@@ -37,6 +43,7 @@ known dependencies.
 ** Web development
 
 - node.js (recent, please)
+
 
 * Info
 
