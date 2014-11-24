@@ -163,3 +163,6 @@
 [submodule "flymake-python-pyflakes"]
 	path = flymake-python-pyflakes
 	url = http://github.com/purcell/flymake-python-pyflakes.git
+[submodule "nodejs-repl"]
+	path = nodejs-repl
+	url = http://github.com/WeRelax/nodejs-repl.el
