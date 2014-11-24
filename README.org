@@ -6,4 +6,47 @@ To copy it yourself, simply:
 
 |git clone --recursive https://github.com/orgcandman/emacs-plugins.git
 
--Aaron
+* Setup
+
+Here's the thing, I've tried to keep the configuration as minimal as possible 
+(ie: leave things to the defaults) so that key bindings aren't totally foreign
+to others, and so that the integration or extension can truly be custom. As 
+such, I'm probably going to forget things, but the following lists all of the
+known dependencies.
+
+** Basic development
+
+- Git 1.7.0+ (used for magit, and you probably already have this... just for posterity)
+- 
+
+** Python development
+
+- Python 2.7+
+- lxml
+- jedi (pip install jedi)
+- pyflakes (pip install pyflakes)
+- not sure if there are others, currently
+
+** C++ development (which uses flymake)
+
+- clang
+- gnu make and makefiles /with the correct syntax-check target/ (if anyone knows how to eliminate this, please let me know)
+- cppcheck
+- GNU global
+
+** Web development
+
+- node.js (recent, please)
+
+* Info
+
+The following lists any customizations and/or deviations included with this setup
+
+** C++ Mode
+
+- Uses spaces, set to 4, instead of tabs
+- Does not use google mode (you can figure that out yourself, if you want it)
+
+** Web mode
+
+- js2refactor is C-c C-m <chord> (see [[https://github.com/magnars/js2-refactor.el][JS2 Refactor Mode]] for more info)

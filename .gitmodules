@@ -151,3 +151,15 @@
 [submodule "bashbot"]
 	path = bashbot
 	url = git@github.com:orgcandman/bashbot.git
+[submodule "expand-region.el"]
+	path = expand-region.el
+	url = https://github.com/magnars/expand-region.el
+[submodule "twittering-mode"]
+	path = twittering-mode
+	url = http://github.com/hayamiz/twittering-mode.git
+[submodule "js2-refactor.el"]
+	path = js2-refactor.el
+	url = http://github.com/magnars/js2-refactor.el
+[submodule "flymake-python-pyflakes"]
+	path = flymake-python-pyflakes
+	url = http://github.com/purcell/flymake-python-pyflakes.git
