@@ -4,6 +4,7 @@
 (require 'projectile)
 (require 'yasnippet)
 (require 'butler) ;; need to check which butler is included
+(require 'flymake)
 
 ;; I use the following for ALL development buffers
 (require 'impatient-mode)
@@ -35,5 +36,8 @@
 (add-hook 'ielm-mode-hook 'simple-emacs-ielm-hook)
 	
 (global-set-key (kbd "C-c f") 'projectile-find-file)
+(global-set-key (kbd "M-p") 'flymake-goto-prev-error)
+(global-set-key (kbd "M-n") 'flymake-goto-next-error)
+
 
 (provide 'simple-emacs-devel)
