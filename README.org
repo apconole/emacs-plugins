@@ -14,11 +14,20 @@ to others, and so that the integration or extension can truly be custom. As
 such, I'm probably going to forget things, but the following lists all of the
 known dependencies.
 
+- autotools
+- texinfo
+
+You _DEFINITELY_ need to run
+
+=cd emacs-jabber && autoreconf -i && ./configure && make=
+
+
 Post clone, you should probably run something like the following:
 
 =find . -type f -name \*.el -exec emacs --batch --eval '(byte-compile-file "{}")' \;=
 
 This should make your load time reasonable.
+
 
 ** Basic development
 
