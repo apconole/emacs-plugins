@@ -9,6 +9,11 @@
   :type 'string
   :group 'simple-emacs-plugins)
 
+(defcustom simple-emacs-plugins-gnu-gtags-binary "/usr/bin/gtags"
+  "Path to GNU global"
+  :type 'string
+  :group 'simple-emacs-plugins)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-tags building for C/C++
 
@@ -17,24 +22,20 @@
 (defun global-tags-root-dir ()
   "Returns GTAGS directory, or nil"
   (with-temp-buffer
-    (if (zerop (call-process "global" nil t nil "-pr"))
+    (if (zerop (call-process simple-emacs-plugins-gnu-global-binary nil t nil "-pr"))
 	(buffer-substring (point-min) (1- (point-max)))
-      nil
-      )
-    )
-  )
+      nil)))
 
 ;; If we need to update, use global mode
 (defun global-run-update ()
   "Executes a global -u"
-  (call-process "global" nil nil nil "-u")
-)
+  (call-process simple-emacs-plugins-gnu-global-binary nil nil nil "-u"))
 
 ;; If there isn't a tags, find the root .git -OR- use current directory
 (defun global-do-initialize ()
   "Goes to the top level .git area and runs global -c"
   (let* ((gtags-default-directory (or (upward-find-file ".git") "."))
-	 (global-initialize-command (concat "cd " gtags-default-directory " && gtags")))
+	 (global-initialize-command (concat "cd " gtags-default-directory " && " simple-emacs-plugins-gnu-gtags-binary)))
     (shell-command global-initialize-command)))
 
 ;; The hook to run (only in c/c++ mode)
@@ -76,6 +77,7 @@
   (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
   (flymake-mode 1)
+  (linum-mode 1)
 
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
 
@@ -87,5 +89,10 @@
 
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
 (add-hook 'c-mode-common-hook 'flymake-cppcheck-load)
+
+(defun simple-emacs-doxymacs-font-lock-hook ()
+  (when (member major-mode '(c++-mode c-mode))
+    (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'simple-emacs-doxymacs-font-lock-hook)
 
 (provide 'simple-emacs-cxx-devel)

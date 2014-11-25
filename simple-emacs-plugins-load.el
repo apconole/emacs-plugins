@@ -34,6 +34,7 @@
 (require 'auto-complete-config)
 (require 'magit)
 (require 'expand-region)
+(require 'smartparens-config)
 
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
@@ -86,6 +87,14 @@ current directory."
 (require 'flymake)
 
 (eval-after-load 'flymake '(require 'flymake-cursor))
+
+(smartparens-global-mode t)
+
+;; good defaults, I think
+(setq-default indent-tabs-mode nil)
+(setq visibile-bell t
+      require-final-newline t
+      apropos-do-all t)
 
 (require 'simple-emacs-devel)
 (require 'simple-emacs-cxx-devel)

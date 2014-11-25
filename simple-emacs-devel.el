@@ -29,7 +29,8 @@
 		     ac-source-symbols
 		     ac-source-words-in-same-mode-buffer))
   (add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
-  (auto-complete-mode 1))
+  (auto-complete-mode 1)
+  (linum-mode 1))
 
 (add-hook 'ielm-mode-hook 'simple-emacs-ielm-hook)
 	

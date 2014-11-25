@@ -17,6 +17,13 @@
 ; set up js2r mode with C-c C-m <chord>
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
+(setq js2-highlight-level 3)
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
+(add-hook 'js-mode-hook (lambda () (flymake-mode t)))
+
 (eval-after-load "web-mode" '(impatient-mode))
+(eval-after-load "web-mode" '(linum-mode 1))
 
 (provide 'simple-emacs-web-devel)
