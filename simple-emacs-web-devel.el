@@ -23,6 +23,8 @@
 
 (add-hook 'js-mode-hook (lambda () (flymake-mode t)))
 
+(define-key nodejs-repl-mode-map (kbd "C-x C-e") 'nodejs-repl-execute)
+
 (eval-after-load "web-mode" '(impatient-mode))
 (eval-after-load "web-mode" '(linum-mode 1))
 

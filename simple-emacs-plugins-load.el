@@ -40,6 +40,8 @@
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
 (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 
+
+
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))
   "Determine the pathname of the first insance of FILE starting from the 
@@ -105,5 +107,6 @@ current directory."
 
 ;; global magit status mode
 (global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 (provide 'simple-emacs-plugins-load)

@@ -52,17 +52,29 @@ This should make your load time reasonable.
 ** Web development
 
 - node.js (recent, please)
-
+- jshint (npm install jshint ; then add jshint to your path)
 
 * Info
 
 The following lists any customizations and/or deviations included with this setup
+** Basic Usage
+The system is set up to do the following out-of-the-box:
+1. Globally enable 'projectile' for faster navigation - all default bindings, but includes 'C-c f' to have a faster 'projectile-find-file' experience
+2. Globally enable 'auto-complete' and 'yasnippets' (feel free to write a few good ones and store them in your snippets dir)
+3. Set up a few nice defaults (including line numbering in specific modes)
+4. Configure expand-region to be 'C-='
+5. Configure magit-stats at 'C-c g s'
 
 ** C++ Mode
 
 - Uses spaces, set to 4, instead of tabs
 - Does not use google mode (you can figure that out yourself, if you want it)
+- Sets up a more intelligent compile (see the /simple-emacs-cxx-devel.el/ file) bound to 'C-c C-l'
+- Automatically enables linum-mode
+- Automatically tries to do flymake (including flymake-cppcheck)
 
 ** Web mode
 
-- js2refactor is C-c C-m <chord> (see [[https://github.com/magnars/js2-refactor.el][JS2 Refactor Mode]] for more info)
+- js2refactor is 'C-c C-m <chord>' (see [[https://github.com/magnars/js2-refactor.el][JS2 Refactor Mode]] for more info)
+- Tries to enable flymake for js
+- Sets up nodejs interaction (using C-x C-e for region evaluation)
