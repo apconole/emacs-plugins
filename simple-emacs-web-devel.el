@@ -4,6 +4,7 @@
 (require 'web-mode)
 (require 'impatient-mode)
 (require 'js2-refactor)
+(require 'ac-js2)
 (require 'nodejs-repl)
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -23,9 +24,14 @@
 
 (add-hook 'js-mode-hook (lambda () (flymake-mode t)))
 
-(define-key nodejs-repl-mode-map (kbd "C-x C-e") 'nodejs-repl-execute)
+(add-hook 'js2-mode-hook '(lambda ()
+                            (local-set-key (kbd "C-x C-e") 'js-send-last-sexp)
+                            (local-set-key (kbd "C-x C-r") 'js-send-region)
+                            (local-set-key (kbd "C-M-x") 'js-send-last-sexp-and-go)
+                            (local-set-key (kbd "C-c b") 'js-send-buffer)))
 
-(eval-after-load "web-mode" '(impatient-mode))
-(eval-after-load "web-mode" '(linum-mode 1))
+(add-hook 'web-mode-hook '(lambda () (impatient-mode)))
+(add-hook 'web-mode-hook '(lambda () (linum-mode 1)))
+(add-hook 'js-mode-hook '(lambda () (linum-mode 1)))
 
 (provide 'simple-emacs-web-devel)
