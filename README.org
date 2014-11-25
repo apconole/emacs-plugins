@@ -20,7 +20,7 @@ known dependencies.
 You _DEFINITELY_ need to run
 
 =cd emacs-jabber && autoreconf -i && ./configure && make=
-
+=cd doxymacs && ./bootstrap && ./configure && make=
 
 Post clone, you should probably run something like the following:
 

@@ -90,6 +90,8 @@
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
 (add-hook 'c-mode-common-hook 'flymake-cppcheck-load)
 
+(require 'doxymacs)
+
 (defun simple-emacs-doxymacs-font-lock-hook ()
   (when (member major-mode '(c++-mode c-mode))
     (doxymacs-font-lock)))
