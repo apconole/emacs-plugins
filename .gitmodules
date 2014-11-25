@@ -1,165 +1,228 @@
 [submodule "emacs-python-environment"]
 	path = emacs-python-environment
 	url = http://github.com/tkf/emacs-python-environment.git
+        ignore = dirty
 [submodule "smartparens"]
 	path = smartparens
 	url = https://github.com/Fuco1/smartparens
+        ignore = dirty
 [submodule "iedit"]
 	path = iedit
 	url = https://github.com/victorhge/iedit
+        ignore = dirty
 [submodule "emacs-jabber"]
 	path = emacs-jabber
 	url = https://github.com/legoscia/emacs-jabber
+        ignore = dirty
 [submodule "projectile"]
 	path = projectile
 	url = https://github.com/bbatsov/projectile.git
+        ignore = dirty
 [submodule "dash.el"]
 	path = dash.el
 	url = https://github.com/magnars/dash.el
+        ignore = dirty
 [submodule "epl"]
 	path = epl
 	url = https://github.com/cask/epl.git
+        ignore = dirty
 [submodule "emacs-deferred"]
 	path = emacs-deferred
 	url = http://github.com/kiwanami/emacs-deferred
+        ignore = dirty
 [submodule "solarized-emacs"]
 	path = solarized-emacs
 	url = http://github.com/bbatsov/solarized-emacs
+        ignore = dirty
 [submodule "js2-mode"]
 	path = js2-mode
 	url = http://github.com/mooz/js2-mode
+        ignore = dirty
 [submodule "elpy"]
 	path = elpy
 	url = http://github.com/jorgenschaefer/elpy.git
+        ignore = dirty
 [submodule "org-redmine"]
 	path = org-redmine
 	url = https://github.com/gongo/org-redmine.git
+        ignore = dirty
 [submodule "jenkins-watch"]
 	path = jenkins-watch
 	url = https://github.com/ataylor284/jenkins-watch.git
+        ignore = dirty
 [submodule "irony-mode"]
 	path = irony-mode
 	url = https://github.com/Sarcasm/irony-mode.git
+        ignore = dirty
 [submodule "impatient-mode"]
 	path = impatient-mode
 	url = http://github.com/skeeto/impatient-mode.git
+        ignore = dirty
 [submodule "Butler"]
 	path = Butler
 	url = https://github.com/AshtonKem/Butler.git
+        ignore = dirty
 [submodule "jshint-mode"]
 	path = jshint-mode
 	url = http://github.com/daleharvey/jshint-mode.git
+        ignore = dirty
 [submodule "flycheck"]
 	path = flycheck
 	url = https://github.com/flycheck/flycheck
+        ignore = dirty
 [submodule "popup-el"]
 	path = popup-el
 	url = https://github.com/auto-complete/popup-el.git
+        ignore = dirty
 [submodule "gnuplot-mode"]
 	path = gnuplot-mode
 	url = https://github.com/bruceravel/gnuplot-mode
+        ignore = dirty
 [submodule "magit"]
 	path = magit
 	url = https://github.com/magit/magit.git
+        ignore = dirty
 [submodule "flymake-easy"]
 	path = flymake-easy
 	url = https://github.com/purcell/flymake-easy.git
+        ignore = dirty
 [submodule "emacs-flymake"]
 	path = emacs-flymake
 	url = https://github.com/illusori/emacs-flymake
+        ignore = dirty
 [submodule "emacs-jedi"]
 	path = emacs-jedi
 	url = http://github.com/tkf/emacs-jedi.git
+        ignore = dirty
 [submodule "helm"]
 	path = helm
 	url = https://github.com/emacs-helm/helm.git
+        ignore = dirty
 [submodule "multiple-cursors.el"]
 	path = multiple-cursors.el
 	url = https://github.com/magnars/multiple-cursors.el
+        ignore = dirty
 [submodule "yasnippet"]
 	path = yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
+        ignore = dirty
 [submodule "yasnippet-snippets"]
 	path = yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+        ignore = dirty
 [submodule "yasmate"]
 	path = yasmate
 	url = https://github.com/capitaomorte/yasmate.git
+        ignore = dirty
 [submodule "html.tmbundle"]
 	path = html.tmbundle
 	url = https://github.com/textmate/html.tmbundle.git
+        ignore = dirty
 [submodule "objective-c.tmbundle"]
 	path = objective-c.tmbundle
 	url = https://github.com/textmate/objective-c.tmbundle.git
+        ignore = dirty
 [submodule "ruby-on-rails-tmbundle"]
 	path = ruby-on-rails-tmbundle
 	url = https://github.com/textmate/ruby-on-rails-tmbundle.git
+        ignore = dirty
 [submodule "ruby.tmbundle"]
 	path = ruby.tmbundle
 	url = https://github.com/textmate/ruby.tmbundle.git
+        ignore = dirty
 [submodule "pyvenv"]
 	path = pyvenv
 	url = http://github.com/jorgenschaefer/pyvenv.git
+        ignore = dirty
 [submodule "emacs-web-server"]
 	path = emacs-web-server
 	url = http://github.com/skeeto/emacs-web-server.git
+        ignore = dirty
 [submodule "global"]
 	path = global
 	url = https://github.com/mgalgs/global
+        ignore = dirty
 [submodule "git-modes"]
 	path = git-modes
 	url = https://github.com/magit/git-modes.git
+        ignore = dirty
 [submodule "s.el"]
 	path = s.el
 	url = https://github.com/magnars/s.el
+        ignore = dirty
 [submodule "pylookup"]
 	path = pylookup
 	url = http://github.com/tsgates/pylookup
+        ignore = dirty
 [submodule "emacs-epc"]
 	path = emacs-epc
 	url = http://github.com/kiwanami/emacs-epc.git
+        ignore = dirty
 [submodule "emacs-flymake-cursor"]
 	path = emacs-flymake-cursor
 	url = https://github.com/ic3guy/emacs-flymake-cursor.git
+        ignore = dirty
 [submodule "ac-irony"]
 	path = ac-irony
 	url = https://github.com/Sarcasm/ac-irony.git
+        ignore = dirty
 [submodule "pkg-info.el"]
 	path = pkg-info.el
 	url = https://github.com/lunaryorn/pkg-info.el.git
+        ignore = dirty
 [submodule "auto-complete-clang"]
 	path = auto-complete-clang
 	url = https://github.com/w-vi/auto-complete-clang
+        ignore = dirty
 [submodule "emacs-ctable"]
 	path = emacs-ctable
 	url = http://github.com/kiwanami/emacs-ctable
+        ignore = dirty
 [submodule "wanderlust"]
 	path = wanderlust
 	url = https://github.com/wanderlust/wanderlust
+        ignore = dirty
 [submodule "auto-complete"]
 	path = auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
+        ignore = dirty
 [submodule "flymake-cppcheck"]
 	path = flymake-cppcheck
 	url = https://github.com/senda-akiha/flymake-cppcheck.git
+        ignore = dirty
 [submodule "web-mode"]
 	path = web-mode
 	url = http://github.com/fxbois/web-mode.git
+        ignore = dirty
 [submodule "bashbot"]
 	path = bashbot
 	url = git@github.com:orgcandman/bashbot.git
+        ignore = dirty
 [submodule "expand-region.el"]
 	path = expand-region.el
 	url = https://github.com/magnars/expand-region.el
+        ignore = dirty
 [submodule "twittering-mode"]
 	path = twittering-mode
 	url = http://github.com/hayamiz/twittering-mode.git
+        ignore = dirty
 [submodule "js2-refactor.el"]
 	path = js2-refactor.el
 	url = http://github.com/magnars/js2-refactor.el
+        ignore = dirty
 [submodule "flymake-python-pyflakes"]
 	path = flymake-python-pyflakes
 	url = http://github.com/purcell/flymake-python-pyflakes.git
+        ignore = dirty
 [submodule "nodejs-repl"]
 	path = nodejs-repl
 	url = http://github.com/WeRelax/nodejs-repl.el
+        ignore = dirty
+[submodule "ac-js2"]
+	path = ac-js2
+	url = https://github.com/ScottyB/ac-js2.git
+        ignore = dirty
+[submodule "skewer-mode"]
+	path = skewer-mode
+	url = https://github.com/skeeto/skewer-mode.git
+        ignore = dirty
