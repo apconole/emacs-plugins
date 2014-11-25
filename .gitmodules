@@ -1,6 +1,3 @@
-[submodule "doxymacs"]
-	path = doxymacs
-	url = https://github.com/emacsattic/doxymacs
 [submodule "emacs-python-environment"]
 	path = emacs-python-environment
 	url = http://github.com/tkf/emacs-python-environment.git

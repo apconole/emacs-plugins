@@ -63,8 +63,6 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'arglist-intro '+)
 
-  (message "Fucked")
-  
   (setq c++-tab-always-indent t) ;; pressing the 'tab' key always indents
   (setq c-basic-offset 4) ;; 4 space
   (setq c-indent-level 4) ;; default is 2
@@ -78,6 +76,7 @@
 
   (flymake-mode 1)
   (linum-mode 1)
+  ;; (doxymacs-mode 1)
 
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
 
@@ -90,11 +89,11 @@
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
 (add-hook 'c-mode-common-hook 'flymake-cppcheck-load)
 
-(require 'doxymacs)
-
-(defun simple-emacs-doxymacs-font-lock-hook ()
-  (when (member major-mode '(c++-mode c-mode))
-    (doxymacs-font-lock)))
-(add-hook 'font-lock-mode-hook 'simple-emacs-doxymacs-font-lock-hook)
+;; don't enable this until I know what's going on
+;; (require 'doxymacs)
+;; (defun simple-emacs-doxymacs-font-lock-hook ()
+;;   (when (member major-mode '(c++-mode c-mode))
+;;     (doxymacs-font-lock)))
+;; (add-hook 'font-lock-mode-hook 'simple-emacs-doxymacs-font-lock-hook)
 
 (provide 'simple-emacs-cxx-devel)
