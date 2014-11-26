@@ -14,7 +14,7 @@ to others, and so that the integration or extension can truly be custom. As
 such, I'm probably going to forget things, but the following lists all of the
 known dependencies.
 
-- autotools
+- autotools (libtool, and gperf to use the included gnu global tagging system)
 - texinfo
 
 You _DEFINITELY_ need to run
@@ -47,7 +47,7 @@ This should make your load time reasonable.
 - clang
 - gnu make and makefiles /with the correct syntax-check target/ (if anyone knows how to eliminate this, please let me know)
 - cppcheck
-- GNU global
+- GNU global (there's an included version for extreme happiness)
 
 ** Web development
 
@@ -72,6 +72,17 @@ The system is set up to do the following out-of-the-box:
 - Sets up a more intelligent compile (see the /simple-emacs-cxx-devel.el/ file) bound to 'C-c C-l'
 - Automatically enables linum-mode
 - Automatically tries to do flymake (including flymake-cppcheck)
+*** GNU Global
+I've included a link to the gnu-global repository. To use, do the following
+: pushd /path/to/emacs-plugins/global
+: chmod +x reconf.sh
+: ./reconf.sh
+: ./configure
+: make
+
+After that, set the =gtags-global-command= variable to =/path/to/emacs-plugins/global/global/global=
+
+If you don't want to use the included version of gnu-global, remove it from the plugins directory.
 
 ** Web mode
 

@@ -4,7 +4,7 @@
 (require 'flymake-cppcheck)
 (require 'gtags)
 
-(defcustom simple-emacs-plugins-gnu-global-binary "/usr/bin/global"
+(defcustom simple-emacs-plugins-gnu-global-binary gtags-global-command
   "Path to GNU global"
   :type 'string
   :group 'simple-emacs-plugins)
@@ -51,13 +51,13 @@
   (let* ((default-directory (or (upward-find-file "Makefile") "."))
 	 (compile-command (concat "cd " default-directory " && "
 				  (concat compile-command flags))))
-    (compile compile-command))
-)
+    (compile compile-command)))
 
 (setq gdb-many-windows t
       gdb-show-main t)
 
 (setq flymake-cppcheck-enable "all")
+(setq gtags-auto-update t)
 
 (defun simple-emacs-c-mode-hook ()
   (c-set-offset 'substatement-open 0)
@@ -76,15 +76,13 @@
 
   (flymake-mode 1)
   (linum-mode 1)
-  ;; (doxymacs-mode 1)
+  (gtags-mode 1)
 
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
 
   (define-key c-mode-base-map (kbd "M-.") 'gtags-find-tag)
   (define-key c-mode-base-map (kbd "M-,") 'gtags-find-tag-from-here)
-  (define-key c-mode-base-map (kbd "M-*") 'gtags-find-pattern)
-  
-  (add-hook 'after-save-hook #'global-run-tags-automatic))
+  (define-key c-mode-base-map (kbd "M-*") 'gtags-find-pattern))
 
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
 (add-hook 'c-mode-common-hook 'flymake-cppcheck-load)
