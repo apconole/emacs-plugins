@@ -1,7 +1,6 @@
 ;;;;;;; Simple Emacs C++ development
 
 (require 'auto-complete-clang)
-(require 'flymake-cppcheck)
 (require 'gtags)
 
 (defcustom simple-emacs-plugins-gnu-global-binary gtags-global-command
@@ -56,7 +55,6 @@
 (setq gdb-many-windows t
       gdb-show-main t)
 
-(setq flymake-cppcheck-enable "all")
 (setq gtags-auto-update t)
 
 (defun simple-emacs-c-mode-hook ()
@@ -85,7 +83,6 @@
   (define-key c-mode-base-map (kbd "M-*") 'gtags-find-pattern))
 
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
-(add-hook 'c-mode-common-hook 'flymake-cppcheck-load)
 
 ;; don't enable this until I know what's going on
 ;; (require 'doxymacs)
