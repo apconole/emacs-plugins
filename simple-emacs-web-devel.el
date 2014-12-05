@@ -34,4 +34,6 @@
 (add-hook 'web-mode-hook '(lambda () (linum-mode 1)))
 (add-hook 'js-mode-hook '(lambda () (linum-mode 1)))
 
+(add-to-list 'ac-modes 'web-mode)
+
 (provide 'simple-emacs-web-devel)

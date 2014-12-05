@@ -229,3 +229,4 @@
 [submodule "enhanced-ruby-mode"]
 	path = enhanced-ruby-mode
 	url = https://github.com/zenspider/enhanced-ruby-mode.git
+        ignore = dirty

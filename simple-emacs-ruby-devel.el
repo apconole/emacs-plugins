@@ -40,4 +40,6 @@
             (local-set-key (kbd "C-c C-l") 'rspec-compile-file)
             (local-set-key (kbd "C-c l") 'rspec-compile-line)))
 
+(add-to-list 'ac-modes 'enh-ruby-mode)
+
 (provide 'simple-emacs-ruby-devel)
