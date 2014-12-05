@@ -8,7 +8,7 @@ To copy it yourself, simply:
 
 * Setup
 
-Here's the thing, I've tried to keep the configuration as minimal as possible 
+Here's the thing: I've tried to keep the configuration as minimal as possible 
 (ie: leave things to the defaults) so that key bindings aren't totally foreign
 to others, and so that the integration or extension can truly be custom. As 
 such, I'm probably going to forget things, but the following lists all of the
@@ -20,6 +20,9 @@ known dependencies.
 You _DEFINITELY_ need to run
 
 =cd emacs-jabber && autoreconf -i && ./configure && make=
+
+and
+
 =cd doxymacs && ./bootstrap && ./configure && make=
 
 Post clone, you should probably run something like the following:
@@ -28,11 +31,24 @@ Post clone, you should probably run something like the following:
 
 This should make your load time reasonable.
 
+This package is complete with the ability to enable / disable various modes of
+operation. IE: you can drop the C++ development package, and the 'social' modes
+independently.
+
+To do so, the following configuration variables are available, simply set them
+to 'nil':
+
+- simple-emacs-cxx-development
+- simple-emacs-python-development
+- simple-emacs-ruby-development
+- simple-emacs-web-development
+- simple-emacs-social-mode
+
 
 ** Basic development
 
 - Git 1.7.0+ (used for magit, and you probably already have this... just for posterity)
-- 
+
 
 ** Python development
 
@@ -40,6 +56,7 @@ This should make your load time reasonable.
 - lxml
 - jedi (pip install jedi)
 - pyflakes (pip install pyflakes)
+- virtualenv
 - not sure if there are others, currently
 
 ** C++ development (which uses flymake)
@@ -48,6 +65,10 @@ This should make your load time reasonable.
 - gnu make and makefiles /with the correct syntax-check target/ (if anyone knows how to eliminate this, please let me know)
 - cppcheck
 - GNU global (there's an included version for extreme happiness)
+
+** Ruby development
+
+- Ruby 1.9.2+
 
 ** Web development
 
@@ -83,6 +104,9 @@ I've included a link to the gnu-global repository. To use, do the following
 After that, set the =gtags-global-command= variable to =/path/to/emacs-plugins/global/global/global=
 
 If you don't want to use the included version of gnu-global, remove it from the plugins directory.
+
+** Python Mode
+Make sure to run =M-x jedi:install-server= before trying to use jedi.
 
 ** Web mode
 

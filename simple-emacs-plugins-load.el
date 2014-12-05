@@ -25,6 +25,31 @@
   :type 'boolean
   :group 'simple-emacs-plugins)
 
+(defcustom simple-emacs-cxx-development t
+  "Auto-enable cxx mode"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
+(defcustom simple-emacs-python-development t
+  "Auto-enable python development mode"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
+(defcustom simple-emacs-web-development t
+  "Auto-enable web development mode"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
+(defcustom simple-emacs-ruby-development t
+  "Auto-enable ruby development mode"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
+(defcustom simple-emacs-social-mode t
+  "Auto-enable social mode"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
 ;; basic stuff I just use a lot
 
 (require 'cl)
@@ -39,7 +64,6 @@
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
 (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
-
 
 
 ;; simple extention functions:
@@ -92,18 +116,30 @@ current directory."
 
 (smartparens-global-mode t)
 
-;; good defaults, I think
-(setq-default indent-tabs-mode nil)
+;; uniquify
+(require 'uniquify)
+(require 'saveplace)
+
+;; partial changes taken from better-defaults package
+
+;; The following MUST be setq-default because they are buffer-local
+(setq-default indent-tabs-mode nil
+              uniquify-buffer-name-style 'forward
+              save-place t)
+
+;; The following are non-buffer local
 (setq visibile-bell t
       require-final-newline t
-      apropos-do-all t)
+      apropos-do-all t
+      uniquify-separator ":"
+      save-place-file (concat user-emacs-directory "visited"))
 
 (require 'simple-emacs-devel)
-(require 'simple-emacs-cxx-devel)
-(require 'simple-emacs-python-devel)
-(require 'simple-emacs-web-devel)
-
-(require 'simple-emacs-social)
+(if simple-emacs-cxx-development (require 'simple-emacs-cxx-devel))
+(if simple-emacs-python-development (require 'simple-emacs-python-devel))
+(if simple-emacs-web-development (require 'simple-emacs-web-devel))
+(if simple-emacs-social-mode (require 'simple-emacs-social))
+(if simple-emacs-ruby-development (require 'simple-emacs-ruby-devel))
 
 ;; global magit status mode
 (global-set-key (kbd "C-c g s") 'magit-status)

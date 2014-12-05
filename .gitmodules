@@ -226,3 +226,6 @@
 	path = skewer-mode
 	url = https://github.com/skeeto/skewer-mode.git
         ignore = dirty
+[submodule "enhanced-ruby-mode"]
+	path = enhanced-ruby-mode
+	url = https://github.com/zenspider/enhanced-ruby-mode.git
