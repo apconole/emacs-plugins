@@ -38,6 +38,7 @@
 (add-hook 'enh-ruby-mode-hook
           (lambda () 
             (local-set-key (kbd "C-c C-l") 'rspec-compile-file)
+            (local-set-key (kbd "M-n") 'enh-ruby-find-error)
             (local-set-key (kbd "C-c l") 'rspec-compile-line)))
 
 (add-to-list 'ac-modes 'enh-ruby-mode)

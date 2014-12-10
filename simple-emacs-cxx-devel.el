@@ -69,7 +69,7 @@
   (setq tab-width 4)
   (setq indent-tabs-mode nil)
   
-  (setq ac-source (append '(ac-source-clang) ac-sources))
+  (setq ac-sources (append '(ac-source-clang) ac-sources))
   (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
   (flymake-mode 1)
