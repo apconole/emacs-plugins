@@ -114,6 +114,9 @@ enabled/disabled by setting the =simple-emacs-plugins-auto-run-gtags= to nil (di
 ** Python Mode
 Make sure to run =M-x jedi:install-server= before trying to use jedi.
 
+** Ruby Mode
+Ruby files should automatically enable =enh-ruby-mode= which provides a number of
+nice features (including linting, completion, etc.). 
 ** Web mode
 
 - js2refactor is 'C-c C-m <chord>' (see [[https://github.com/magnars/js2-refactor.el][JS2 Refactor Mode]] for more info)
