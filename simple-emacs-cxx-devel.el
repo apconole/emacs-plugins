@@ -28,6 +28,11 @@
   :type 'string
   :group 'simple-emacs-plugins)
 
+(defcustom simple-emacs-plugins-auto-run-gtags t
+  "Whether to automatically run gtags / global update on file save"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-tags building for C/C++
 
@@ -55,7 +60,7 @@
 ;; The hook to run (only in c/c++ mode)
 (defun global-run-tags-automatic() 
   "Either updates tags which already exist, OR does a creation at the toplevel .git directory"
-  (when (member major-mode '(c++-mode c-mode)) 
+  (when (and simple-emacs-plugins-auto-run-gtags (member major-mode '(c++-mode c-mode)))
     (if (global-tags-root-dir) 
 	(global-run-update)
       (global-do-initialize))))

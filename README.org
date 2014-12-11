@@ -103,7 +103,13 @@ I've included a link to the gnu-global repository. To use, do the following
 
 After that, set the =gtags-global-command= variable to =/path/to/emacs-plugins/global/global/global=
 
-If you don't want to use the included version of gnu-global, remove it from the plugins directory.
+If you don't want to use the included version of gnu-global, add the following to your .emacs
+
+: (setq simple-emacs-bundled-global nil)
+
+An additional feature enabled is the ability to automatically 'tag' c/c++ sources. This can be 
+enabled/disabled by setting the =simple-emacs-plugins-auto-run-gtags= to nil (disable) or t
+(enable).
 
 ** Python Mode
 Make sure to run =M-x jedi:install-server= before trying to use jedi.
