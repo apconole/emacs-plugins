@@ -1,14 +1,29 @@
 ;;;;;;; Simple Emacs C++ development
 
 (require 'auto-complete-clang)
-(require 'gtags)
 
-(defcustom simple-emacs-plugins-gnu-global-binary gtags-global-command
+(defcustom simple-emacs-plugins-gnu-gtags-binary "/usr/bin/gtags"
   "Path to GNU global"
   :type 'string
   :group 'simple-emacs-plugins)
 
-(defcustom simple-emacs-plugins-gnu-gtags-binary "/usr/bin/gtags"
+(defcustom simple-emacs-bundled-global t
+  "Wether to use the bundled version of GNU Global"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
+;; allow to shut off the bundled gnu global - just in case
+(if 
+    (and (member
+          (expand-file-name (concat simple-emacs-plugins-dir "/global"))
+          load-path)
+         (not simple-emacs-bundled-global))
+    (delete (expand-file-name (concat simple-emacs-plugins-dir "/global"))
+            load-path))
+
+(require 'gtags)
+
+(defcustom simple-emacs-plugins-gnu-global-binary "/usr/bin/global"
   "Path to GNU global"
   :type 'string
   :group 'simple-emacs-plugins)
@@ -83,6 +98,8 @@
   (define-key c-mode-base-map (kbd "M-*") 'gtags-find-pattern))
 
 (add-hook 'c-mode-common-hook 'simple-emacs-c-mode-hook)
+
+(add-hook 'after-save-hook 'global-run-tags-automatic)
 
 ;; don't enable this until I know what's going on
 ;; (require 'doxymacs)
