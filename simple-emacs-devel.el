@@ -15,6 +15,9 @@
 ;; append yasnippet as a source for auto-complete
 (setq ac-source (append '(ac-source-yasnippet) ac-sources))
 
+;; Disable the annoying flymake popup
+(setq flymake-gui-warnings-enabled nil)
+
 ;; do autoloads
 (when simple-emacs-autoload-all-dev
   (projectile-global-mode)
