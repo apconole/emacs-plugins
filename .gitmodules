@@ -230,3 +230,6 @@
 	path = enhanced-ruby-mode
 	url = https://github.com/zenspider/enhanced-ruby-mode.git
         ignore = dirty
+[submodule "asn1-mode"]
+	path = asn1-mode
+	url = https://github.com/kawabata/asn1-mode

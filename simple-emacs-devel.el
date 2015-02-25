@@ -5,6 +5,7 @@
 (require 'yasnippet)
 (require 'butler) ;; need to check which butler is included
 (require 'flymake)
+(require 'asn1-mode)
 
 ;; I use the following for ALL development buffers
 (require 'impatient-mode)
@@ -42,5 +43,8 @@
 (global-set-key (kbd "M-p") 'flymake-goto-prev-error)
 (global-set-key (kbd "M-n") 'flymake-goto-next-error)
 
+;; Set up the asn.1 binding
+(add-to-list 'auto-mode-alist '("\\.asn1$" . asn1-mode))
+(add-to-list 'auto-mode-alist '("\\.gdmo$" . asn1-mode))
 
 (provide 'simple-emacs-devel)
