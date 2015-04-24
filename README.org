@@ -49,7 +49,7 @@ to 'nil':
 
 - Git 1.7.0+ (used for magit, and you probably already have this... just for posterity)
 
-
+  
 ** Python development
 
 - Python 2.7+
@@ -85,6 +85,7 @@ The system is set up to do the following out-of-the-box:
 3. Set up a few nice defaults (including line numbering in specific modes)
 4. Configure expand-region to be 'C-='
 5. Configure magit-stats at 'C-c g s'
+6. Narrowing / Widening is done via 'C-x n' (specific thanks to [[http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html][Artur Malabarba]])
 
 ** C++ Mode
 
@@ -122,3 +123,4 @@ nice features (including linting, completion, etc.).
 - js2refactor is 'C-c C-m <chord>' (see [[https://github.com/magnars/js2-refactor.el][JS2 Refactor Mode]] for more info)
 - Tries to enable flymake for js
 - Sets up nodejs interaction (using C-x C-e for region evaluation)
+- Using the narrow-mode is a good way here of dropping just to js

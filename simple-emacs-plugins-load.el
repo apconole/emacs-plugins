@@ -12,7 +12,7 @@
 	   (normal-top-level-add-subdirs-to-load-path))
 	 load-path)))
 
-;; for some reason, multiple-cursors.el isn't loaded??
+;; Need explicit loading for the .el files
 (add-to-list 'load-path (concat simple-emacs-plugins-dir "/multiple-cursors.el"))
 (add-to-list 'load-path (concat simple-emacs-plugins-dir "/expand-region.el"))
 (add-to-list 'load-path (concat simple-emacs-plugins-dir "/s.el"))
@@ -65,6 +65,11 @@
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
 (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
 
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))

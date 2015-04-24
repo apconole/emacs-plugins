@@ -233,3 +233,6 @@
 [submodule "asn1-mode"]
 	path = asn1-mode
 	url = https://github.com/kawabata/asn1-mode
+[submodule "markdown-mode"]
+	path = markdown-mode
+	url = https://github.com/defunkt/markdown-mode.git
