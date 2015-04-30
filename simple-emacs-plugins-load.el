@@ -58,6 +58,7 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (require 'magit)
+(require 'git-timemachine)
 (require 'expand-region)
 (require 'smartparens-config)
 
@@ -120,6 +121,7 @@ current directory."
 (eval-after-load 'flymake '(require 'flymake-cursor))
 
 (smartparens-global-mode t)
+(setq gc-cons-threshold 20000000)
 
 ;; uniquify
 (require 'uniquify)
@@ -149,5 +151,7 @@ current directory."
 ;; global magit status mode
 (global-set-key (kbd "C-c g s") 'magit-status)
 (global-set-key (kbd "C-=") 'er/expand-region)
+
+(global-set-key (kbd "C-c g t") 'git-timemachine)
 
 (provide 'simple-emacs-plugins-load)

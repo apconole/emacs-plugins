@@ -236,3 +236,6 @@
 [submodule "markdown-mode"]
 	path = markdown-mode
 	url = https://github.com/defunkt/markdown-mode.git
+[submodule "git-timemachine"]
+	path = git-timemachine
+	url = https://github.com/pidu/git-timemachine
