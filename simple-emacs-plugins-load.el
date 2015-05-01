@@ -92,8 +92,10 @@
 ;; Revert current hunk
 (global-set-key (kbd "C-x g r") 'git-gutter:revert-hunk)
 
-;; Set git-gutter to update
-(setq git-gutter:update-interval 2)
+(setq git-gutter:modified "= "
+      git-gutter:added-sign "> "
+      git-gutter:deleted-sign "< "
+      git-gutter:update-interval 2)
 
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))
