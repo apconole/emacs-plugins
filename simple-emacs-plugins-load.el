@@ -52,15 +52,19 @@
 
 ;; basic stuff I just use a lot
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 (require 'cl)
 (require 'helm)
 (require 'multiple-cursors)
 (require 'auto-complete)
 (require 'auto-complete-config)
-(require 'magit)
+(require 'magit-autoloads)
 (require 'git-timemachine)
+(require 'git-gutter)
 (require 'expand-region)
 (require 'smartparens-config)
+(require 'sx-load)
 
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
@@ -71,6 +75,25 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; this is a bit flaky...
+(git-gutter:linum-setup)
+
+(global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
+(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+
+;; Jump to next/previous hunk
+(global-set-key (kbd "C-x g p") 'git-gutter:previous-hunk)
+(global-set-key (kbd "C-x g n") 'git-gutter:next-hunk)
+
+;; Stage current hunk
+(global-set-key (kbd "C-x g s") 'git-gutter:stage-hunk)
+
+;; Revert current hunk
+(global-set-key (kbd "C-x g r") 'git-gutter:revert-hunk)
+
+;; Set git-gutter to update
+(setq git-gutter:update-interval 2)
 
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))

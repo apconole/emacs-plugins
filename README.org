@@ -25,11 +25,18 @@ and
 
 =cd doxymacs && ./bootstrap && ./configure && make=
 
+and
+
+=cd magit && make lisp=
+
 Post clone, you should probably run something like the following:
 
 =find . -type f -name \*.el -exec emacs --batch --eval '(byte-compile-file "{}")' \;=
 
 This should make your load time reasonable.
+
+- Error 'Cannot find load file let-alist'
+This occurs on systems which have Emacs 24.3 or earlier. Simply add the let-alist.el to your emacs load path (should be /usr/share/emacs/24.X/lisp/).
 
 This package is complete with the ability to enable / disable various modes of
 operation. IE: you can drop the C++ development package, and the 'social' modes

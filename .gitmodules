@@ -239,3 +239,9 @@
 [submodule "git-timemachine"]
 	path = git-timemachine
 	url = https://github.com/pidu/git-timemachine
+[submodule "emacs-git-gutter"]
+	path = emacs-git-gutter
+	url = https://github.com/syohex/emacs-git-gutter
+[submodule "stack-exchange"]
+	path = stack-exchange
+	url = https://github.com/vermiculus/sx.el
