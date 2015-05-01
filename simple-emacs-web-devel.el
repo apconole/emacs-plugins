@@ -25,14 +25,15 @@
 (add-hook 'js-mode-hook (lambda () (flymake-mode t)))
 
 (add-hook 'js2-mode-hook '(lambda ()
+                            (add-commented-annotations)
                             (local-set-key (kbd "C-x C-e") 'js-send-last-sexp)
                             (local-set-key (kbd "C-x C-r") 'js-send-region)
                             (local-set-key (kbd "C-M-x") 'js-send-last-sexp-and-go)
                             (local-set-key (kbd "C-c b") 'js-send-buffer)))
 
-(add-hook 'web-mode-hook '(lambda () (impatient-mode)))
+(add-hook 'web-mode-hook '(lambda () (add-commented-annotations) (impatient-mode)))
 (add-hook 'web-mode-hook '(lambda () (linum-mode 1)))
-(add-hook 'js-mode-hook '(lambda () (linum-mode 1)))
+(add-hook 'js-mode-hook '(lambda () (add-commented-annotations) (linum-mode 1)))
 
 (add-to-list 'ac-modes 'web-mode)
 

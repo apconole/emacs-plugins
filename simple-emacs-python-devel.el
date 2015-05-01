@@ -12,10 +12,11 @@
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
 (defun simple-python-hook ()
+  (add-commented-annotations)
+  (auto-complete-mode)
+  (jedi:ac-setup)
   (linum-mode 1))
 
 (add-hook 'python-mode-hook 'simple-python-hook)
-(add-hook 'python-mode-hook 'auto-complete-mode)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
 
 (provide 'simple-emacs-python-devel)

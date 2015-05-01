@@ -95,7 +95,7 @@
   (flymake-mode 1)
   (linum-mode 1)
   (gtags-mode 1)
-
+  (add-commented-annotations)
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
 
   (define-key c-mode-base-map (kbd "M-.") 'gtags-find-tag)

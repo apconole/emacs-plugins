@@ -25,6 +25,12 @@
   (ac-config-default)
   (yas-global-mode 1))
 
+;; simple 'keywords' that are always relevant
+(defun add-commented-annotations ()
+  (font-lock-add-keywords
+   nil '(("\\<\\(\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):\\)"
+          1 font-lock-warning-face t))))
+
 ;;; This comes from endlessparentheses.com blog post
 ;;; Credits to Michael Fogleman and Artur Malabarba
 (defun narrow-or-widen-dwim (p)
