@@ -77,6 +77,8 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; this is a bit flaky...
+(global-git-gutter-mode +1)
+
 (git-gutter:linum-setup)
 
 (global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
@@ -92,9 +94,9 @@
 ;; Revert current hunk
 (global-set-key (kbd "C-x g r") 'git-gutter:revert-hunk)
 
-(setq git-gutter:modified "= "
-      git-gutter:added-sign "> "
-      git-gutter:deleted-sign "< "
+(setq git-gutter:modified "="
+      git-gutter:added-sign ">"
+      git-gutter:deleted-sign "<"
       git-gutter:update-interval 2)
 
 ;; simple extention functions:
