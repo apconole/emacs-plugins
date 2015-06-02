@@ -7,7 +7,7 @@
   :type 'string
   :group 'simple-emacs-plugins)
 
-(defcustom simple-emacs-bundled-global t
+(defcustom simple-emacs-bundled-global f
   "Wether to use the bundled version of GNU Global"
   :type 'boolean
   :group 'simple-emacs-plugins)

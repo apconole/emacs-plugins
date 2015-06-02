@@ -138,10 +138,6 @@
 	path = emacs-web-server
 	url = http://github.com/skeeto/emacs-web-server.git
         ignore = dirty
-[submodule "global"]
-	path = global
-	url = https://github.com/mgalgs/global
-        ignore = dirty
 [submodule "git-modes"]
 	path = git-modes
 	url = https://github.com/magit/git-modes.git
