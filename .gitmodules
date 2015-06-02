@@ -174,10 +174,6 @@
 	path = emacs-ctable
 	url = http://github.com/kiwanami/emacs-ctable
         ignore = dirty
-[submodule "wanderlust"]
-	path = wanderlust
-	url = https://github.com/wanderlust/wanderlust
-        ignore = dirty
 [submodule "auto-complete"]
 	path = auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
