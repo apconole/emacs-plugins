@@ -150,6 +150,18 @@ current directory."
 (smartparens-global-mode t)
 (setq gc-cons-threshold 20000000)
 
+(setq inhibit-splash-screen t)         ; hide welcome screen
+(setq inhibit-startup-message t)       ; and the welcome message
+(setq inhibit-startup-screen t)        ; because emacs has 1000 variables...
+
+(defun se:git-clone (repository &optional target)
+  (interactive "sGit URL: \nsTarget Dir: ")
+  (setq local_target "")
+  (if target
+      (setq local_target target))
+  (shell-command (concat "git clone --recursive " repository " " target)))
+
+
 ;; uniquify
 (require 'uniquify)
 (require 'saveplace)
