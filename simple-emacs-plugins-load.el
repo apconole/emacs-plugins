@@ -99,6 +99,19 @@
       git-gutter:deleted-sign "<"
       git-gutter:update-interval 2)
 
+;; Magit-blame in other window of current buffer
+(defun magit-blame-other-window ()
+  "Opens a new window from the current buffer filename and runs magit-blame on 
+   it"
+  (interactive)
+
+  (setq buffer-name (generate-new-buffer-name "*Magit Blame Mode*"))
+  (setq previous-buffer-file-name (buffer-file-name))
+  (pop-to-buffer (make-indirect-buffer (current-buffer) buffer-name))
+  (setq buffer-file-name previous-buffer-name)
+  (magit-blame-mode 1)
+  (goto-char (point-min)))
+
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))
   "Determine the pathname of the first insance of FILE starting from the 
