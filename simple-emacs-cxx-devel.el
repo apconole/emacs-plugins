@@ -81,6 +81,8 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'arglist-intro '+)
 
+  (setq flymake-cppcheck-enable "error,performance,portability,information")
+
   (setq c++-tab-always-indent t) ;; pressing the 'tab' key always indents
   (setq c-basic-offset 4) ;; 4 space
   (setq c-indent-level 4) ;; default is 2
