@@ -108,7 +108,7 @@
   (setq buffer-name (generate-new-buffer-name "*Magit Blame Mode*"))
   (setq previous-buffer-file-name (buffer-file-name))
   (pop-to-buffer (make-indirect-buffer (current-buffer) buffer-name))
-  (setq buffer-file-name previous-buffer-name)
+  (setq buffer-file-name previous-buffer-file-name)
   (magit-blame-mode 1)
   (goto-char (point-min)))
 
