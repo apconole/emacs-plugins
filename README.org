@@ -16,6 +16,7 @@ known dependencies.
 
 - autotools (libtool, and gperf to use the included gnu global tagging system)
 - texinfo
+- w3m
 
 You _DEFINITELY_ need to run
 
