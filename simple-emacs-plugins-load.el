@@ -112,6 +112,8 @@
   (magit-blame-mode 1)
   (goto-char (point-min)))
 
+(global-set-key (kbd "C-x g b") 'magit-blame-other-window)
+
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))
   "Determine the pathname of the first insance of FILE starting from the 
