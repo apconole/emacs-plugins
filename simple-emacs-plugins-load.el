@@ -114,6 +114,22 @@
 
 (global-set-key (kbd "C-x g b") 'magit-blame-other-window)
 
+;; Git timemachine
+(defun git-timemachine-other-window ()
+  "Opens a new window from the current buffer filename and runs git-timemachine
+   on it"
+  (interactive)
+
+  (setq buffer-name (generate-new-buffer-name "*Timemachine Mode*"))
+  (setq previous-buffer-file-name (buffer-file-name))
+  (pop-to-buffer (make-indirect-buffer (current-buffer) buffer-name))
+  (setq buffer-file-name previous-buffer-file-name)
+  (goto-char (point-min))
+  (git-timemachine)
+  (local-set-key (kbd "q") 'kill-this-buffer))
+
+(global-set-key (kbd "C-x g t") 'git-timemachine-other-window)
+
 ;; simple extention functions:
 (defun* get-closest-pathname (&optional (file "Makefile"))
   "Determine the pathname of the first insance of FILE starting from the 
