@@ -105,12 +105,13 @@
    it"
   (interactive)
 
-  (setq buffer-name (generate-new-buffer-name "*Magit Blame Mode*"))
+  (setq buffer-name (concat (generate-new-buffer-name "*Magit Blame Mode: ") (buffer-file-name) (quote "*")))
   (setq previous-buffer-file-name (buffer-file-name))
   (pop-to-buffer (make-indirect-buffer (current-buffer) buffer-name))
   (setq buffer-file-name previous-buffer-file-name)
+  (goto-char (point-min))
   (magit-blame-mode 1)
-  (goto-char (point-min)))
+  (local-set-key (kbd "q") 'kill-this-buffer))
 
 (global-set-key (kbd "C-x g b") 'magit-blame-other-window)
 
