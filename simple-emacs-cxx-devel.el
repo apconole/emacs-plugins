@@ -33,6 +33,15 @@
   :type 'boolean
   :group 'simple-emacs-plugins)
 
+(defcustom simple-emacs-cxx-tabs-as-spaces t
+  "Whether C/C++ mode sets tabs as spaces"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
+(defcustom simple-emacs-tabs-are-tabs-list (list) 
+  "List of directories where tabs should be tabs"
+  :group 'simple-emacs-plugins)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-tags building for C/C++
 
@@ -77,6 +86,11 @@
 
 (setq gtags-auto-update t)
 
+(defun remove-last-dir (dir)
+  (let* ((splits (cdr (split-string dir "/")))
+         (res (mapconcat 'identity (butlast splits) "/")))
+    (concat "/" res)))
+
 (defun simple-emacs-c-mode-hook ()
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'arglist-intro '+)
@@ -89,7 +103,8 @@
   
   (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
   (setq tab-width 4)
-  (setq indent-tabs-mode nil)
+  (if simple-emacs-cxx-tabs-as-spaces (setq indent-tabs-mode nil))
+  (if (and (upward-find-file ".git") (member (remove-last-dir (upward-find-file ".git")) simple-emacs-tabs-are-tabs-list)) (setq indent-tabs-mode t))
   
   (setq ac-sources (append '(ac-source-clang) ac-sources))
   (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
