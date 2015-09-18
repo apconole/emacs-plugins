@@ -237,3 +237,6 @@
 [submodule "stack-exchange"]
 	path = stack-exchange
 	url = https://github.com/vermiculus/sx.el
+[submodule "restclient"]
+	path = restclient
+	url = https://github.com/pashky/restclient.el

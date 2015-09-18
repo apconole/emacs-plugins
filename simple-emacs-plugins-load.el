@@ -50,6 +50,11 @@
   :type 'boolean
   :group 'simple-emacs-plugins)
 
+(defcustom simple-emacs-multiple-smtp nil
+  "Use multiple email accounts for smtp mail"
+  :type 'boolean
+  :group 'simple-emacs-plugins)
+
 ;; basic stuff I just use a lot
 
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -224,5 +229,24 @@ current directory."
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "C-c g t") 'git-timemachine)
+
+;;; Simple multi-smtp setup
+(defun simple-emacs-multi-mail ()
+  (if simple-emacs-multiple-smtp
+      (save-excursion (loop with from = (save-restriction (message-narrow-to-headers)
+                                                          (message-fetch-field "from"))
+                            for (addr fname server port) in smtp-accounts
+                            when (or (string-match addr from) (string-match (format "%s <%s>" fname addr) from))
+                            do 
+                            (setq user-mail-address addr
+                                  user-full-name fname
+                                  smtpmail-smtp-server server
+                                  smtpmail-smtp-service port
+                                  )
+                            ))))
+
+(defadvice smtpmail-via-smtp 
+  (before change-smtp-by-message-from-field (recipient buffer &optional ask) activate)
+  (with-current-buffer buffer (simple-emacs-multi-mail)))
 
 (provide 'simple-emacs-plugins-load)
