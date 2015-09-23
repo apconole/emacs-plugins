@@ -55,6 +55,9 @@
   :type 'boolean
   :group 'simple-emacs-plugins)
 
+;; fix up 
+(setq gc-cons-threshold 20000000)
+
 ;; basic stuff I just use a lot
 
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -185,7 +188,6 @@ current directory."
 (eval-after-load 'flymake '(require 'flymake-cursor))
 
 (smartparens-global-mode t)
-(setq gc-cons-threshold 20000000)
 
 (setq inhibit-splash-screen t)         ; hide welcome screen
 (setq inhibit-startup-message t)       ; and the welcome message
