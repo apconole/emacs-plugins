@@ -123,6 +123,11 @@
 
 (add-hook 'after-save-hook 'global-run-tags-automatic)
 
+(defun simple-emacs-gtags-select ()
+  (define-key gtags-select-mode-map (kbd "q") (lambda () (interactive) (kill-buffer))))
+
+(add-hook 'gtags-select-mode-hook 'simple-emacs-gtags-select)
+
 ;; don't enable this until I know what's going on
 ;; (require 'doxymacs)
 ;; (defun simple-emacs-doxymacs-font-lock-hook ()
