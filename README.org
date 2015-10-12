@@ -17,27 +17,17 @@ known dependencies.
 - autotools (libtool, and gperf to use the included gnu global tagging system)
 - texinfo
 - w3m
+- GNU global
 
-You _DEFINITELY_ need to run
-
-=cd emacs-jabber && autoreconf -i && ./configure && make=
-
-and
-
-=cd doxymacs && ./bootstrap && ./configure && make=
-
-AND
-
-=cd magit && make lisp=
+NOTE: You must be using Emacs =24.4= and a recent copy of `git` for this. To 
+aid in this effort, I've created a script (./install_reqs.sh) to build local
+copies of everything.
 
 Post clone, you should probably run something like the following:
 
 =find . -type f -name \*.el -exec emacs --batch --eval '(byte-compile-file "{}")' \;=
 
 This should make your load time reasonable.
-
-- Error 'Cannot find load file let-alist'
-This occurs on systems which have Emacs 24.3 or earlier. Simply add the let-alist.el to your emacs load path (should be /usr/share/emacs/24.X/lisp/).
 
 This package is complete with the ability to enable / disable various modes of
 operation. IE: you can drop the C++ development package, and the 'social' modes
