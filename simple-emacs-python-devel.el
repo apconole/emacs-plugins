@@ -7,8 +7,11 @@
 ;;   pip install jedi
 ;;   pip install --upgrade pyflakes
 
-(require 'jedi)
-(require 'flymake-python-pyflakes)
+(simple-emacs-package-install 'jedi)
+(simple-emacs-package-install 'flymake-python-pyflakes)
+(simple-emacs-package-install 'pyvenv)
+(simple-emacs-package-install 'python-environment)
+
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
 (defun simple-python-hook ()

@@ -1,11 +1,14 @@
 ;; Web development junk
 
-(require 'js2-mode)
-(require 'web-mode)
-(require 'impatient-mode)
-(require 'js2-refactor)
-(require 'ac-js2)
-(require 'nodejs-repl)
+(simple-emacs-package-install 'js2-mode)
+(simple-emacs-package-install 'web-mode)
+(simple-emacs-package-install 'impatient-mode)
+(simple-emacs-package-install 'js2-refactor)
+(simple-emacs-package-install 'ac-js2)
+(simple-emacs-package-install 'nodejs-repl)
+(simple-emacs-package-install 'flymake-jshint)
+(simple-emacs-package-install 'web-server)
+(simple-emacs-package-install 'restclient)
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))

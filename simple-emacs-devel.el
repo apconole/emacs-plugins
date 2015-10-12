@@ -1,14 +1,13 @@
 ;;; Simple development goodies
 
-(require 'iedit)
-(require 'projectile)
-(require 'yasnippet)
-(require 'butler) ;; need to check which butler is included
-(require 'flymake)
-(require 'asn1-mode)
+(simple-emacs-package-install 'iedit)
+(simple-emacs-package-install 'projectile)
+(simple-emacs-package-install 'yasnippet)
+(simple-emacs-package-install 'butler)
+(simple-emacs-package-install 'asn1-mode)
 
 ;; I use the following for ALL development buffers
-(require 'impatient-mode)
+(simple-emacs-package-install 'impatient-mode)
 
 ;; set up yasnippet custom dirs
 (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "snippets"))
@@ -32,7 +31,7 @@
           1 font-lock-warning-face t))))
 
 ;;; From binchen.org
-(require 'w3m)
+(simple-emacs-package-install 'w3m)
 
 (defun w3m-get-url-from-search-engine-alist (k l)
   (let (rlt)

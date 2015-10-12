@@ -1,27 +1,15 @@
 ;;;;;;; Simple Emacs C++ development
 
-(require 'auto-complete-clang)
+(simple-emacs-package-install 'auto-complete-clang)
+
+
+(simple-emacs-package-install 'gtags)
+(simple-emacs-package-install 'flymake-cppcheck)
 
 (defcustom simple-emacs-plugins-gnu-gtags-binary "/usr/bin/gtags"
   "Path to GNU global"
   :type 'string
   :group 'simple-emacs-plugins)
-
-(defcustom simple-emacs-bundled-global nil
-  "Wether to use the bundled version of GNU Global"
-  :type 'boolean
-  :group 'simple-emacs-plugins)
-
-;; allow to shut off the bundled gnu global - just in case
-(if 
-    (and (member
-          (expand-file-name (concat simple-emacs-plugins-dir "/global"))
-          load-path)
-         (not simple-emacs-bundled-global))
-    (delete (expand-file-name (concat simple-emacs-plugins-dir "/global"))
-            load-path))
-
-(require 'gtags)
 
 (defcustom simple-emacs-plugins-gnu-global-binary "/usr/bin/global"
   "Path to GNU global"

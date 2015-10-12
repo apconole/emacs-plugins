@@ -5,6 +5,7 @@
   :type 'string
   :group 'simple-emacs-plugins)
 
+(simple-emacs-package-install-no-require 'enh-ruby-mode)
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))

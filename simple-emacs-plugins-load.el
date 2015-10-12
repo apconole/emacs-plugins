@@ -1,25 +1,5 @@
 ;; Sets up the emacs plugin list
 
-(defcustom simple-emacs-plugins-dir (concat user-emacs-directory "plugins")
-  "Directory which contains all of the various plugins to load"
-  :type 'string
-  :group 'simple-emacs-plugins)
-
-(let ((default-directory simple-emacs-plugins-dir))
-  (setq load-path
-	(append
-	 (let ((load-path (copy-sequence load-path))) ;; Shadow
-	   (normal-top-level-add-subdirs-to-load-path))
-	 load-path)))
-
-;; Need explicit loading for the .el files
-(add-to-list 'load-path (concat simple-emacs-plugins-dir "/multiple-cursors.el"))
-(add-to-list 'load-path (concat simple-emacs-plugins-dir "/expand-region.el"))
-(add-to-list 'load-path (concat simple-emacs-plugins-dir "/s.el"))
-(add-to-list 'load-path (concat simple-emacs-plugins-dir "/dash.el"))
-(add-to-list 'load-path (concat simple-emacs-plugins-dir "/pkg-info.el"))
-(add-to-list 'load-path (concat simple-emacs-plugins-dir "/js2-refactor.el"))
-
 (defcustom simple-emacs-autoload-all-dev t
   "Auto-enable YASnippets, auto-complete, and projectile global mode"
   :type 'boolean
@@ -60,19 +40,43 @@
 
 ;; basic stuff I just use a lot
 
-(setq magit-last-seen-setup-instructions "1.4.0")
+(require 'package)
+(package-refresh-contents)
+(package-initialize)
 
-(require 'cl)
-(require 'helm)
-(require 'multiple-cursors)
-(require 'auto-complete)
-(require 'auto-complete-config)
-(require 'magit-autoloads)
-(require 'git-timemachine)
-(require 'git-gutter)
-(require 'expand-region)
-(require 'smartparens-config)
-(require 'sx-load)
+(mapc (lambda(p) (push p package-archives))
+      '(("marmalade" . "http://marmalade-repo.org/packages/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")
+	("melpa-stable" . "http://stable.melpa.org/packages/")))
+
+
+(defun simple-emacs-package-install-no-require (pkgid)
+  "Detects whether or not a package is installed, and if not, installs it"
+  (if (not (package-installed-p pkgid))
+      (progn
+        (package-refresh-contents)
+        (package-install pkgid)))
+  )
+
+(defun simple-emacs-package-install (pkgid)
+  "Detects whether or not a package is installed, and if not, installs it, then
+   loads it."
+  (simple-emacs-package-install-no-require pkgid)
+  (require pkgid))
+
+(package-refresh-contents)
+
+(simple-emacs-package-install 'cl)
+(simple-emacs-package-install 'helm)
+(simple-emacs-package-install 'multiple-cursors)
+(simple-emacs-package-install 'auto-complete)
+(simple-emacs-package-install 'magit)
+(simple-emacs-package-install 'git-timemachine)
+(simple-emacs-package-install 'git-gutter)
+(simple-emacs-package-install 'expand-region)
+(simple-emacs-package-install 'smartparens)
+(simple-emacs-package-install 'sx)
+(simple-emacs-package-install-no-require 'solarized-theme)
 
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
@@ -88,6 +92,8 @@
 (global-git-gutter-mode +1)
 
 (git-gutter:linum-setup)
+
+(add-hook 'emacs-lisp-mode-hook (lambda () (linum-mode 1)))
 
 (global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
@@ -179,11 +185,12 @@ current directory."
     ; return statement
     (if found (concat dirname "/") nil)))
 
-(eval-after-load 'info
-  '(progn (info-initialize)
-          (add-to-list 'Info-directory-list (concat simple-emacs-plugins-dir "/magit"))))
+;;(eval-after-load 'info
+;;  '(progn (info-initialize)
+;;          (add-to-list 'Info-directory-list (concat simple-emacs-plugins-dir "/magit"))))
 
-(require 'flymake)
+(simple-emacs-package-install 'flymake)
+(simple-emacs-package-install-no-require 'flymake-cursor)
 
 (eval-after-load 'flymake '(require 'flymake-cursor))
 
