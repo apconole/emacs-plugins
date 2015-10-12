@@ -21,9 +21,14 @@ known dependencies.
 
 NOTE: You must be using Emacs =24.4= and a recent copy of `git` for this. To 
 aid in this effort, I've created a script (./install_reqs.sh) to build local
-copies of everything.
+copies of everything. Alternately, if you use Ubuntu, you may do the following:
 
-Post clone, you should probably run something like the following:
+|sudo add-apt-repository ppa:git-core/ppa
+|sudo add-apt-repository ppa:ubuntu-elisp/ppa
+|sudo apt-get update && sudo apt-get install emacs-snapshot git
+|sudo update-alternatives --config emacs
+
+Post clone, you may want to run something like the following:
 
 =find . -type f -name \*.el -exec emacs --batch --eval '(byte-compile-file "{}")' \;=
 
