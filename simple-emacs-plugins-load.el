@@ -67,6 +67,7 @@
 (package-refresh-contents)
 
 (simple-emacs-package-install 'cl)
+(simple-emacs-package-install 's)
 (simple-emacs-package-install 'helm)
 (simple-emacs-package-install 'multiple-cursors)
 (simple-emacs-package-install 'auto-complete)
