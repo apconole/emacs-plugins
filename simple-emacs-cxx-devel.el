@@ -30,6 +30,11 @@
   "List of directories where tabs should be tabs"
   :group 'simple-emacs-plugins)
 
+(defcustom simple-emacs-linux-cstyle-list (list)
+  "List of directories where all of the linux style guidelines 
+   should be used"
+  :group 'simple-emacs-plugins)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto-tags building for C/C++
 
@@ -83,26 +88,34 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'arglist-intro '+)
 
-  (setq flymake-cppcheck-enable "error,performance,portability,information")
+  (setq flymake-cppcheck-enable "error,performance,portability,information"
+        ac-sources (append '(ac-source-clang) ac-sources))
 
-  (setq c++-tab-always-indent t) ;; pressing the 'tab' key always indents
-  (setq c-basic-offset 4) ;; 4 space
-  (setq c-indent-level 4) ;; default is 2
-  
-  (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
-  (setq tab-width 4)
   (if simple-emacs-cxx-tabs-as-spaces (setq indent-tabs-mode nil))
-  (if (and (upward-find-file ".git") (member (remove-last-dir (upward-find-file ".git")) simple-emacs-tabs-are-tabs-list)) (setq indent-tabs-mode t))
+  (if (and (upward-find-file ".git") (member (remove-last-dir (upward-find-file ".git")) simple-emacs-linux-cstyle-list))
+        (setq tab-stop-list '(8 16 24 32 40 48 56 64)
+              c-indent-level 8
+              c-basic-offset 8
+              tab-width 8
+              indent-tabs-mode t
+              c-default-style "linux"
+              )
+    (setq c++-tab-always-indent t
+          c-basic-offset 4
+          c-indent-level 4
+          tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)
+          tab-width 4
+          indent-tabs-mode nil))
+  (if (and (upward-find-file ".git ") (member (remove-last-dir (upward-find-file ".git")) simple-emacs-tabs-are-tabs-list))
+      (setq indent-tabs-mode nil))
   
-  (setq ac-sources (append '(ac-source-clang) ac-sources))
-  (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
   (flymake-mode 1)
   (linum-mode 1)
   (gtags-mode 1)
   (add-commented-annotations)
+  
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
-
+  (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
   (define-key c-mode-base-map (kbd "M-.") 'gtags-find-tag)
   (define-key c-mode-base-map (kbd "M-,") 'gtags-find-tag-from-here)
   (define-key c-mode-base-map (kbd "M-*") 'gtags-find-pattern))
@@ -112,6 +125,10 @@
 (add-hook 'after-save-hook 'global-run-tags-automatic)
 
 (defun simple-emacs-gtags-select ()
+  ;; this was needed for some reason with the MELPA version of gtags package
+  (define-key gtags-select-mode-map (kbd "RET") 'gtags-select-tag)
+
+  ;; this isn't default due to gtags not being 'stacked'
   (define-key gtags-select-mode-map (kbd "q") (lambda () (interactive) (kill-buffer))))
 
 (add-hook 'gtags-select-mode-hook 'simple-emacs-gtags-select)
