@@ -115,20 +115,21 @@
       git-gutter:update-interval 2)
 
 ;; Magit-blame in other window of current buffer
-(defun magit-blame-other-window ()
-  "Opens a new window from the current buffer filename and runs magit-blame on 
-   it"
-  (interactive)
+;; Disabled - Magit 2.2.0 no longer supports this
+;; (defun magit-blame-other-window ()
+;;   "Opens a new window from the current buffer filename and runs magit-blame on 
+;;    it"
+;;   (interactive)
 
-  (setq buffer-name (concat (generate-new-buffer-name "*Magit Blame Mode: ") (buffer-file-name) (quote "*")))
-  (setq previous-buffer-file-name (buffer-file-name))
-  (pop-to-buffer (make-indirect-buffer (current-buffer) buffer-name))
-  (setq buffer-file-name previous-buffer-file-name)
-  (goto-char (point-min))
-  (magit-blame-mode 1)
-  (local-set-key (kbd "q") 'kill-this-buffer))
+;;   (setq buffer-name (concat (generate-new-buffer-name "*Magit Blame Mode: ") (buffer-file-name) (quote "*")))
+;;   (setq previous-buffer-file-name (buffer-file-name))
+;;   (pop-to-buffer (make-indirect-buffer (current-buffer) buffer-name))
+;;   (setq buffer-file-name previous-buffer-file-name)
+;;   (goto-char (point-min))
+;;   (magit-blame)
+;;   (local-set-key (kbd "q") 'kill-this-buffer))
 
-(global-set-key (kbd "C-x g b") 'magit-blame-other-window)
+(global-set-key (kbd "C-x g b") 'magit-blame-popup)
 
 ;; Git timemachine
 (defun git-timemachine-other-window ()
