@@ -21,12 +21,21 @@ known dependencies.
 
 NOTE: You must be using Emacs =24.4= and a recent copy of `git` for this. To 
 aid in this effort, I've created a script (./install_reqs.sh) to build local
-copies of everything. Alternately, if you use Ubuntu, you may do the following:
+copies of everything. Run the following:
 
+For Ubuntu:
 |sudo add-apt-repository ppa:git-core/ppa
 |sudo add-apt-repository ppa:ubuntu-elisp/ppa
 |sudo apt-get update && sudo apt-get install emacs-snapshot git
 |sudo update-alternatives --config emacs
+
+For OS X (El Capitan, 10.11):
+|brew install w3m
+|brew install emacs
+|brew install global
+
+For Fedora:
+|TBD...
 
 Post clone, you may want to run something like the following:
 
