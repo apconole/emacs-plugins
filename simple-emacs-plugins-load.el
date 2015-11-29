@@ -201,6 +201,7 @@ current directory."
 (setq inhibit-splash-screen t)         ; hide welcome screen
 (setq inhibit-startup-message t)       ; and the welcome message
 (setq inhibit-startup-screen t)        ; because emacs has 1000 variables...
+(tool-bar-mode -1)
 
 (defun se:git-clone (repository &optional target)
   (interactive "sGit URL: \nsTarget Dir: ")
