@@ -35,19 +35,22 @@
   :type 'boolean
   :group 'simple-emacs-plugins)
 
+(setq smtp-accounts ())
+(setq list-git-mappings ())
+
 ;; fix up 
 (setq gc-cons-threshold 20000000)
 
 ;; basic stuff I just use a lot
 
 (require 'package)
-(package-refresh-contents)
-(package-initialize)
 
 (mapc (lambda(p) (push p package-archives))
-      '(("marmalade" . "http://marmalade-repo.org/packages/")
+      '(
+        ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")
-	("melpa-stable" . "http://stable.melpa.org/packages/")))
+	("melpa-stable" . "http://stable.melpa.org/packages/")
+	))
 
 
 (defun simple-emacs-package-install-no-require (pkgid)
@@ -65,6 +68,7 @@
   (require pkgid))
 
 (package-refresh-contents)
+(package-initialize)
 
 (simple-emacs-package-install 'cl)
 (simple-emacs-package-install 's)
@@ -73,7 +77,7 @@
 (simple-emacs-package-install 'auto-complete)
 (simple-emacs-package-install 'magit)
 (simple-emacs-package-install 'git-timemachine)
-(simple-emacs-package-install 'git-gutter)
+;;(simple-emacs-package-install 'git-gutter)
 (simple-emacs-package-install 'expand-region)
 (simple-emacs-package-install 'smartparens)
 (simple-emacs-package-install 'sx)
@@ -90,24 +94,24 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; this is a bit flaky...
-(global-git-gutter-mode +1)
+;; (global-git-gutter-mode +1)
 
-(git-gutter:linum-setup)
+;; (git-gutter:linum-setup)
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (linum-mode 1)))
 
-(global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
-(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+;; (global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
+;; (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
 
 ;; Jump to next/previous hunk
-(global-set-key (kbd "C-x g p") 'git-gutter:previous-hunk)
-(global-set-key (kbd "C-x g n") 'git-gutter:next-hunk)
+;; (global-set-key (kbd "C-x g p") 'git-gutter:previous-hunk)
+;; (global-set-key (kbd "C-x g n") 'git-gutter:next-hunk)
 
 ;; Stage current hunk
-(global-set-key (kbd "C-x g s") 'git-gutter:stage-hunk)
+;; (global-set-key (kbd "C-x g s") 'git-gutter:stage-hunk)
 
 ;; Revert current hunk
-(global-set-key (kbd "C-x g r") 'git-gutter:revert-hunk)
+;; (global-set-key (kbd "C-x g r") 'git-gutter:revert-hunk)
 
 (setq git-gutter:modified "="
       git-gutter:added-sign ">"
@@ -260,5 +264,27 @@ current directory."
 (defadvice smtpmail-via-smtp 
   (before change-smtp-by-message-from-field (recipient buffer &optional ask) activate)
   (with-current-buffer buffer (simple-emacs-multi-mail)))
+
+(require 'gnus-article-treat-patch)
+(setq ft/gnus-article-patch-conditions
+      '( "^@@ -[0-9]+,[0-9]+ \\+[0-9]+,[0-9]+ @@" ))
+
+;;; Setup a way of importing patches from a gnus mailbox into a local directory
+(defun simple-emacs-gnus-reader-apply-git-patch ()
+  (interactive)
+  (let ((temp-patch-file (make-temp-file "patch"))
+        (default-directory (read-string "Target Git Directory: " "~/git/" nil nil nil))
+        (build-command (read-string "Rebuild Command: " "make clean && make" nil nil nil))
+        )
+    (save-window-excursion
+      (gnus-summary-select-article-buffer)
+      (write-region (point-min) (point-max) temp-patch-file t)
+      )
+    (call-process "git" nil "*GNUS Git Patch*" t "am" temp-patch-file)
+    (shell-command build-command "*GNUS Git Patch*" "*GNUS Git Patch*")
+    (switch-to-buffer "*GNUS Git Patch*")
+    (delete-file temp-patch-file)
+    )
+  )
 
 (provide 'simple-emacs-plugins-load)
