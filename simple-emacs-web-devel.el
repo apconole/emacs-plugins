@@ -35,8 +35,8 @@
                             (local-set-key (kbd "C-c b") 'js-send-buffer)))
 
 (add-hook 'web-mode-hook '(lambda () (add-commented-annotations) (impatient-mode)))
-(add-hook 'web-mode-hook '(lambda () (linum-mode 1)))
-(add-hook 'js-mode-hook '(lambda () (add-commented-annotations) (linum-mode 1)))
+;; (add-hook 'web-mode-hook '(lambda () (linum-mode 1)))
+(add-hook 'js-mode-hook '(lambda () (add-commented-annotations) ))
 
 (add-to-list 'ac-modes 'web-mode)
 

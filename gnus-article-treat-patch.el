@@ -200,6 +200,10 @@ patch treatment is wanted or not. Return `t' or `nil' accordingly."
       (throw 'done nil)))
 
 
+;; Patch is receiving treatment hook
+(defvar ft/gnus-article-pre-treatment-hook nil
+  "Hook called after the buffer has been deemed to want treatment.")
+
 ;; The actual article treatment code
 (defun ft/gnus-article-treat-patch-state-machine ()
   "Implement the state machine which colourises a part of an article
@@ -440,6 +444,30 @@ borrowing the highlighting faces for from `diff-mode'."
         (progn
           (let ((inhibit-read-only t))
             (goto-char (point-min))
+            ;; execute the article-treatment hook
+            (run-hooks 'ft/gnus-article-pre-treatment-hook)
             (ft/gnus-article-treat-patch-state-machine))))))
+
+(defun gnus-article-patch-beginning-of-hunk ()
+  (gnus-summary-select-article-buffer)
+  (save-excursion
+    (let ((line (buffer-substring (line-beginning-position) (line-end-position)))
+          )
+      (while (not (ft/gnus-scissors-line-p line))
+        (setq line ())
+        )
+      )))
+
+(defun gnus-article-patch-apply ()
+  (interactive)
+  (let ((temp-patch-file (make-temp-file "patch")))))
+
+(defvar gnus-article-patch-mode-map
+  (let ((kmap (make-keymap)))))
+
+(define-minor-mode gnus-article-patch-mode
+  "minor mode to read and interact with patch files"
+  :init-value nil
+  :keymap gnus-article-patch-mode-map)
 
 (provide 'gnus-article-treat-patch)

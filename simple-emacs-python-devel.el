@@ -11,14 +11,16 @@
 (simple-emacs-package-install 'flymake-python-pyflakes)
 (simple-emacs-package-install 'pyvenv)
 (simple-emacs-package-install 'python-environment)
-
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(simple-emacs-package-install 'elpy)
 
 (defun simple-python-hook ()
   (add-commented-annotations)
   (auto-complete-mode)
   (jedi:ac-setup)
-  (linum-mode 1))
+  ;; (linum-mode 1)
+  (elpy-mode)
+  (local-set-key (kbd "M-.") 'elpy-goto-definition)
+  (flymake-python-pyflakes-load))
 
 (add-hook 'python-mode-hook 'simple-python-hook)
 

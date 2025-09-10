@@ -47,9 +47,9 @@
 
 (mapc (lambda(p) (push p package-archives))
       '(
-        ("marmalade" . "http://marmalade-repo.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")
-	("melpa-stable" . "http://stable.melpa.org/packages/")
+        ; ("marmalade" . "http://marmalade-repo.org/packages/")
+        ; ("melpa" . "http://melpa.milkbox.net/packages/")
+	("melpa-stable" . "http://melpa.org/packages/")
 	))
 
 
@@ -57,7 +57,7 @@
   "Detects whether or not a package is installed, and if not, installs it"
   (if (not (package-installed-p pkgid))
       (progn
-        (package-refresh-contents)
+        ;;(package-refresh-contents)
         (package-install pkgid)))
   )
 
@@ -67,10 +67,10 @@
   (simple-emacs-package-install-no-require pkgid)
   (require pkgid))
 
-(package-refresh-contents)
+;(package-refresh-contents)
 (package-initialize)
 
-(simple-emacs-package-install 'cl)
+(simple-emacs-package-install 'cl-lib)
 (simple-emacs-package-install 's)
 (simple-emacs-package-install 'helm)
 (simple-emacs-package-install 'multiple-cursors)
@@ -98,7 +98,7 @@
 
 ;; (git-gutter:linum-setup)
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (linum-mode 1)))
+;; (add-hook 'emacs-lisp-mode-hook (lambda () (linum-mode 1)))
 
 ;; (global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
 ;; (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
@@ -152,7 +152,7 @@
 (global-set-key (kbd "C-x g t") 'git-timemachine-other-window)
 
 ;; simple extention functions:
-(defun* get-closest-pathname (&optional (file "Makefile"))
+(defun get-closest-pathname (file)
   "Determine the pathname of the first insance of FILE starting from the 
 current directory."
   (let ((root (expand-file-name "/"))) 
@@ -281,10 +281,87 @@ current directory."
       (write-region (point-min) (point-max) temp-patch-file t)
       )
     (call-process "git" nil "*GNUS Git Patch*" t "am" temp-patch-file)
-    (shell-command build-command "*GNUS Git Patch*" "*GNUS Git Patch*")
-    (switch-to-buffer "*GNUS Git Patch*")
+    ;;    (shell-command build-command "*GNUS Git Patch*" "*GNUS Git Patch*")
     (delete-file temp-patch-file)
+    (start-process "git-patch" "*GNUS Git Patch*" "/bin/sh" "-c" build-command)
+    (switch-to-buffer "*GNUS Git Patch*")
     )
   )
+
+(defun simple-emacs-gnus-check-patch ()
+  (interactive)
+  (let ((temp-patch-file (make-temp-file "patch"))
+        (default-directory (read-string "Target Git Directory: " "~/git/" nil nil nil))
+        )
+    (save-window-excursion
+      (gnus-summary-select-article-buffer)
+      (write-region (point-min) (point-max) temp-patch-file t)
+      )
+    (start-process "git-patch" "*GNUS Git Patch*" "/usr/bin/rhcheckpatch.py" "-v" "-p" "-g" default-directory "-a" temp-patch-file)
+    (switch-to-buffer "*GNUS Git Patch*")
+    )
+  )
+
+(defun simple-emacs-gnus-write-patch ()
+  (interactive)
+  (let ((temp-patch-file (make-temp-file "patch"))
+        )
+    (save-window-excursion
+      (gnus-summary-select-article-buffer)
+      (write-region (point-min) (point-max) temp-patch-file t)
+      )
+    (message (concat "Write patch to file: " temp-patch-file))
+    )
+  )
+
+(defun simple-emacs-message-mode ()
+  (setq fill-column 72)
+  (turn-on-auto-fill)
+  (flyspell-mode 1))
+(add-hook 'message-mode-hook 'simple-emacs-message-mode)
+
+(defvar simple-emacs-patch-mail-matches-exec
+  '()
+  "LIST of (subject-regex command) pairs to be executed.  Results will be
+placed in a buffer called *PATCH TREATMENT*")
+
+;; (defun simple-emacs-patch-mail-hook ()
+;;   (message "patch hook list %s" (gnus-fetch-field "Subject")))
+;; (add-hook 'ft/gnus-article-pre-treatment-hook 'simple-emacs-patch-mail-hook)
+
+(defun rs-gnus-get-label (header)
+  "Returns label from X-Label header"
+  (let
+      ((lbl (or (cdr (assq 'X-Label (mail-header-extra header))) "")))
+    lbl))
+
+(defalias 'gnus-user-format-function-r 'rs-gnus-get-label)
+
+(setq nnmail-extra-headers '(To X-Label Newsgroups Content-Type))
+
+(copy-face 'default 'face-label)
+(set-face-foreground 'face-label "red")
+(setq gnus-face-6 'face-label)
+(setq gnus-face-5 'face-label)
+(when window-system
+  (setq
+   gnus-sum-thread-tree-root "● "
+   gnus-sum-thread-tree-false-root "▷ "
+   gnus-sum-thread-tree-single-indent ""
+   gnus-sum-thread-tree-leaf-with-other "├─►"
+   gnus-sum-thread-tree-vertical "│ "
+   gnus-sum-thread-tree-single-leaf "└─►"))
+;; (set-face-foreground 'gnus-group-mail-1-empty "blue")
+(setq gnus-group-line-format "%P%M%S %(%g%) (%y)\n")
+(setq gnus-summary-line-format
+      "%1{%U%R%z: %}%2{%d%}%5{ %[%4i%] %}%4{%-24,24n%}%6{%-4,4ur%}%5{| %}%(%1{%B%}%s%)\n")
+
+(defun rs-gnus-summary-limit-to-label (regexp &optional not-matching)
+  "Limit the summary buffer to articles that match a label."
+  (interactive
+   (list (read-string
+     (format "%s label (regexp): "
+     (if current-prefix-arg "Exclude" "Limit to"))) current-prefix-arg))
+  (gnus-summary-limit-to-extra 'X-Label regexp not-matching))
 
 (provide 'simple-emacs-plugins-load)

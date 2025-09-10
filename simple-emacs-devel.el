@@ -3,7 +3,7 @@
 (simple-emacs-package-install 'iedit)
 (simple-emacs-package-install 'projectile)
 (simple-emacs-package-install 'yasnippet)
-(simple-emacs-package-install 'butler)
+;; (simple-emacs-package-install 'butler)
 (simple-emacs-package-install 'asn1-mode)
 
 ;; I use the following for ALL development buffers
@@ -125,7 +125,8 @@ narrowed."
 		     ac-source-words-in-same-mode-buffer))
   (add-to-list 'ac-modes 'inferior-emacs-lisp-mode)
   (auto-complete-mode 1)
-  (linum-mode 1))
+  ;; (linum-mode 1)
+  )
 
 (add-hook 'ielm-mode-hook 'simple-emacs-ielm-hook)
 	

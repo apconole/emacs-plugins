@@ -3,8 +3,8 @@
 (simple-emacs-package-install 'auto-complete-clang)
 
 
-(simple-emacs-package-install 'gtags)
-(simple-emacs-package-install 'flymake-cppcheck)
+; (simple-emacs-package-install 'gtags)
+; (simple-emacs-package-install 'flymake-cppcheck)
 
 (defcustom simple-emacs-plugins-gnu-gtags-binary "/usr/bin/gtags"
   "Path to GNU global"
@@ -88,8 +88,8 @@
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'arglist-intro '+)
 
-  (setq flymake-cppcheck-enable "error,performance,portability,information"
-        ac-sources (append '(ac-source-clang) ac-sources))
+;  (setq flymake-cppcheck-enable "error,performance,portability,information"
+;        ac-sources (append '(ac-source-clang) ac-sources))
 
   (if simple-emacs-cxx-tabs-as-spaces (setq indent-tabs-mode nil))
   (if (and (upward-find-file ".git") (member (remove-last-dir (upward-find-file ".git")) simple-emacs-linux-cstyle-list))
@@ -110,8 +110,8 @@
       (setq indent-tabs-mode nil))
   
   (flymake-mode 1)
-  (linum-mode 1)
-  (gtags-mode 1)
+  ;; (linum-mode 1)
+  ;; (gtags-mode 1)
   (add-commented-annotations)
   
   (define-key c-mode-base-map (kbd "C-c C-l") (lambda () (interactive) (call-interactively 'compile-next-makefile)))
